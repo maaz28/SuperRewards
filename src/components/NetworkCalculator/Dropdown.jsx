@@ -34,7 +34,7 @@ const customStyles = {
 export default function SimpleSelect({ func, label, id, values, default_value_index }) {
 
   const handleChange = (event) => {
-    func(event.value);
+    func(event.value, id);
   }
 
   const slideValues = [];

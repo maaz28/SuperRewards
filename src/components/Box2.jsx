@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Dropdown from './NetworkCalculator/Dropdown';
 import { calculateTokenPriceInDollars } from '../smartContractFunc/functions';
 import { package_values, average_purchases_values, referral_values, virality_values, levels_values } from './NetworkCalculator/Dropdown_constant_values';
+import { level1, level2, level3, level4, level5, level6, level7, level8, level9, level10 } from './NetworkCalculator/algo';
+
+const levels_arr = [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10];
 
 export default class Box2 extends Component {
 
@@ -9,18 +12,18 @@ export default class Box2 extends Component {
     super();
 
     this.state = {
-      referrals: '',
-      virality: '',
-      levels: '',
-      purchase: '',
-      package: ''
+      referrals: 5,
+      virality: 2,
+      levels: 1,
+      purchase: 100,
+      pkg: 100
     };
 
     this.setValue = this.setValue.bind(this);
   }
 
-  setValue(value) {
-    this.setState({ spots: value });
+  setValue(value, name) {
+    this.setState({ [name]: value });
   }
 
 
@@ -36,17 +39,19 @@ export default class Box2 extends Component {
     })
   }
 
-  render() {
-    const { investment, players, spots, tokenPrice } = this.state;
-    console.log(investment, players, spots, tokenPrice);
-    let tokens = (investment / tokenPrice);
-    let profit = (players * 28 * 0.05);
-    profit += (spots * 25 * 0.05);
-    profit = profit * (tokens / 5000);
-    if (isNaN(profit)) {
-      profit = 0;
-    }
 
+
+
+
+  render() {
+    const { referrals,
+      virality,
+      levels,
+      purchase,
+      pkg } = this.state;
+    let func = levels_arr[levels - 1];
+    let profit = func((referrals, virality, pkg, purchase));
+    console.log(profit);
     return (
       <div>
         <div id="box-3">
