@@ -1,4 +1,4 @@
-let packageSpots = {
+const packageSpots = {
   25: {
     tpe: 1029,
     tps: 2046
@@ -8,30 +8,30 @@ let packageSpots = {
     tps: 6138
   },
   250: {
-    tpe: 1029,
-    tps: 2046
+    tpe: 10745,
+    tps: 14322
   },
   500: {
-    tpe: 1029,
-    tps: 2046
+    tpe: 30705,
+    tps: 30690
   },
   1000: {
-    tpe: 1029,
-    tps: 2046
+    tpe: 79329,
+    tps: 63426
   },
   2500: {
-    tpe: 1029,
-    tps: 2046
+    tpe: 193473,
+    tps: 128898
   },
   5000: {
-    tpe: 1029,
-    tps: 2046
+    tpe: 455041,
+    tps: 259842
   }
 }
 
 
 
-export async function level1(referrals, virality, averagePackage, averagePackageSpots) {
+export function level1(referrals, virality, averagePackage, averagePackageSpots) {
   console.log(referrals, virality, averagePackage, averagePackageSpots);
   try {
 
@@ -44,8 +44,8 @@ export async function level1(referrals, virality, averagePackage, averagePackage
 
 }
 
-export async function level2(referrals, virality, averagePackage, averagePackageSpots) {
-
+export function level2(referrals, virality, averagePackage, averagePackageSpots) {
+  console.log(referrals, virality, averagePackage, averagePackageSpots);
   try {
 
     return ((referrals + (referrals * referrals)) * averagePackage * 0.02) + ((referrals * referrals) * virality) * averagePackageSpots * (packageSpots[averagePackage].tpe / packageSpots[averagePackage].tps);
@@ -58,7 +58,8 @@ export async function level2(referrals, virality, averagePackage, averagePackage
 
 }
 
-export async function level3(referrals, virality, averagePackage, averagePackageSpots) {
+export function level3(referrals, virality, averagePackage, averagePackageSpots) {
+  console.log(referrals, virality, averagePackage, averagePackageSpots);
 
   try {
     return level1(referrals, virality, averagePackage, averagePackageSpots) + (((referrals * referrals)) * virality * averagePackage * 0.02) + ((referrals * referrals) * virality) * averagePackageSpots * (packageSpots[averagePackage].tpe / packageSpots[averagePackage].tps);
@@ -69,7 +70,7 @@ export async function level3(referrals, virality, averagePackage, averagePackage
 
 
 
-export async function level4(referrals, virality, averagePackage, averagePackageSpots) {
+export function level4(referrals, virality, averagePackage, averagePackageSpots) {
 
   try {
 
@@ -85,14 +86,13 @@ export async function level4(referrals, virality, averagePackage, averagePackage
 
 }
 
-export async function level5(level4, referrals, virality, averagePackage, averagePackageSpots, totalPackageEarning, totalPackageSpots) {
+export function level5(referrals, virality, averagePackage, averagePackageSpots) {
 
   try {
-
     return level1(referrals, virality, averagePackage, averagePackageSpots)
       + level3(referrals, virality, averagePackage, averagePackageSpots)
       + level4(referrals, virality, averagePackage, averagePackageSpots)
-      + (((referrals * referrals)) * (virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality)) * averagePackageSpots * (totalPackageEarning / totalPackageSpots);
+      + (((referrals * referrals)) * (virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality)) * averagePackageSpots * (packageSpots[averagePackage].tpe / packageSpots[averagePackage].tps);
 
   } catch (e) {
 
@@ -104,25 +104,7 @@ export async function level5(level4, referrals, virality, averagePackage, averag
 
 
 
-export async function level6(referrals, virality, averagePackage, averagePackageSpots, totalPackageEarning, totalPackageSpots) {
-
-  try {
-
-    return level1(referrals, virality, averagePackage, averagePackageSpots)
-      + level3(referrals, virality, averagePackage, averagePackageSpots)
-      + level4(referrals, virality, averagePackage, averagePackageSpots)
-      + level5(referrals, virality, averagePackage, averagePackageSpots)
-      + (((referrals * referrals)) * (virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality)) * averagePackageSpots * (totalPackageEarning / totalPackageSpots);
-
-  } catch (e) {
-
-
-
-  }
-
-}
-
-export async function level7(referrals, virality, averagePackage, averagePackageSpots, totalPackageEarning, totalPackageSpots) {
+export function level6(referrals, virality, averagePackage, averagePackageSpots) {
 
   try {
 
@@ -130,8 +112,7 @@ export async function level7(referrals, virality, averagePackage, averagePackage
       + level3(referrals, virality, averagePackage, averagePackageSpots)
       + level4(referrals, virality, averagePackage, averagePackageSpots)
       + level5(referrals, virality, averagePackage, averagePackageSpots)
-      + level6(referrals, virality, averagePackage, averagePackageSpots)
-      + (((referrals * referrals)) * (virality * virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality * virality)) * averagePackageSpots * (totalPackageEarning / totalPackageSpots);
+      + (((referrals * referrals)) * (virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality)) * averagePackageSpots * (packageSpots[averagePackage].tpe / packageSpots[averagePackage].tps);
 
   } catch (e) {
 
@@ -141,8 +122,7 @@ export async function level7(referrals, virality, averagePackage, averagePackage
 
 }
 
-
-export async function level8(referrals, virality, averagePackage, averagePackageSpots, totalPackageEarning, totalPackageSpots) {
+export function level7(referrals, virality, averagePackage, averagePackageSpots) {
 
   try {
 
@@ -151,8 +131,7 @@ export async function level8(referrals, virality, averagePackage, averagePackage
       + level4(referrals, virality, averagePackage, averagePackageSpots)
       + level5(referrals, virality, averagePackage, averagePackageSpots)
       + level6(referrals, virality, averagePackage, averagePackageSpots)
-      + level7(referrals, virality, averagePackage, averagePackageSpots)
-      + (((referrals * referrals)) * (virality * virality * virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality * virality * virality)) * averagePackageSpots * (totalPackageEarning / totalPackageSpots);
+      + (((referrals * referrals)) * (virality * virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality * virality)) * averagePackageSpots * (packageSpots[averagePackage].tpe / packageSpots[averagePackage].tps);
 
   } catch (e) {
 
@@ -162,7 +141,8 @@ export async function level8(referrals, virality, averagePackage, averagePackage
 
 }
 
-export async function level9(referrals, virality, averagePackage, averagePackageSpots, totalPackageEarning, totalPackageSpots) {
+
+export function level8(referrals, virality, averagePackage, averagePackageSpots) {
 
   try {
 
@@ -172,7 +152,27 @@ export async function level9(referrals, virality, averagePackage, averagePackage
       + level5(referrals, virality, averagePackage, averagePackageSpots)
       + level6(referrals, virality, averagePackage, averagePackageSpots)
       + level7(referrals, virality, averagePackage, averagePackageSpots)
-      + level8(referrals, virality, averagePackage, averagePackageSpots) + (((referrals * referrals)) * (virality * virality * virality * virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality * virality * virality * virality)) * averagePackageSpots * (totalPackageEarning / totalPackageSpots);
+      + (((referrals * referrals)) * (virality * virality * virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality * virality * virality)) * averagePackageSpots * (packageSpots[averagePackage].tpe / packageSpots[averagePackage].tps);
+
+  } catch (e) {
+
+
+
+  }
+
+}
+
+export function level9(referrals, virality, averagePackage, averagePackageSpots) {
+
+  try {
+
+    return level1(referrals, virality, averagePackage, averagePackageSpots)
+      + level3(referrals, virality, averagePackage, averagePackageSpots)
+      + level4(referrals, virality, averagePackage, averagePackageSpots)
+      + level5(referrals, virality, averagePackage, averagePackageSpots)
+      + level6(referrals, virality, averagePackage, averagePackageSpots)
+      + level7(referrals, virality, averagePackage, averagePackageSpots)
+      + level8(referrals, virality, averagePackage, averagePackageSpots) + (((referrals * referrals)) * (virality * virality * virality * virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality * virality * virality * virality)) * averagePackageSpots * (packageSpots[averagePackage].tpe / packageSpots[averagePackage].tps);
 
   } catch (e) {
 
@@ -184,7 +184,7 @@ export async function level9(referrals, virality, averagePackage, averagePackage
 
 
 
-export async function level10(referrals, virality, averagePackage, averagePackageSpots, totalPackageEarning, totalPackageSpots) {
+export function level10(referrals, virality, averagePackage, averagePackageSpots) {
 
   try {
 
@@ -196,7 +196,7 @@ export async function level10(referrals, virality, averagePackage, averagePackag
       + level7(referrals, virality, averagePackage, averagePackageSpots)
       + level8(referrals, virality, averagePackage, averagePackageSpots)
       + level9(referrals, virality, averagePackage, averagePackageSpots)
-      + (((referrals * referrals)) * (virality * virality * virality * virality * virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality * virality * virality * virality * virality)) * averagePackageSpots * (totalPackageEarning / totalPackageSpots);
+      + (((referrals * referrals)) * (virality * virality * virality * virality * virality * virality * virality * virality) * averagePackage * 0.02) + ((referrals * referrals) * (virality * virality * virality * virality * virality * virality * virality * virality)) * averagePackageSpots * (packageSpots[averagePackage].tpe / packageSpots[averagePackage].tps);
 
   } catch (e) {
 

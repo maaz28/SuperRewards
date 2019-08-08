@@ -14,7 +14,7 @@ export default class Box2 extends Component {
     this.state = {
       referrals: 5,
       virality: 2,
-      levels: 1,
+      levels: 10,
       purchase: 100,
       pkg: 100
     };
@@ -50,7 +50,9 @@ export default class Box2 extends Component {
       purchase,
       pkg } = this.state;
     let func = levels_arr[levels - 1];
-    let profit = func((referrals, virality, pkg, purchase));
+    console.log(func)
+    console.log(referrals, virality, pkg, purchase)
+    let profit = func(referrals, virality, pkg, purchase);
     console.log(profit);
     return (
       <div>
@@ -120,7 +122,7 @@ export default class Box2 extends Component {
           <div className="container-fluid col-md-7 line-space">
             <Dropdown
               label="Your Package"
-              id="package"
+              id="pkg"
               values={package_values}
               func={this.setValue}
               default_value_index={1}
