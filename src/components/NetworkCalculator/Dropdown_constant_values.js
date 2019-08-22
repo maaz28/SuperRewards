@@ -1,69 +1,61 @@
 export const package_values = [
   {
-    value: 25,
+    value: 0.5,
     label: '$25'
   },
   {
-    value: 100,
+    value: 0.83,
     label: '$100'
   },
   {
-    value: 250,
+    value: 1.40,
     label: '$250'
   },
   {
-    value: 500,
+    value: 1.75,
     label: '$500'
   },
   {
-    value: 1000,
+    value: 2.09,
     label: '$1,000'
   },
   {
-    value: 2500,
+    value: 2.44,
     label: '$2,500'
   },
   {
-    value: 5000,
+    value: 2.67,
     label: '$5,000'
   }
 ];
 
 export const average_purchases_values = [
   {
-    value: 25,
+    value: 1,
     label: '$25'
   },
   {
-    value: 50,
-    label: '$50'
-  },
-  {
-    value: 75,
-    label: '$75'
-  },
-  {
-    value: 100,
+    value: 4,
     label: '$100'
   },
   {
-    value: 250,
+    value: 10,
     label: '$250'
   },
   {
-    value: 500,
+    value: 20,
     label: '$500'
   },
   {
-    value: 1000,
+    value: 40,
     label: '$1,000'
   },
   {
-    value: 2500,
+    value: 100,
     label: '$2,500'
   },
   {
-    value: 5000,
+    value: 200,
     label: '$5,000'
   }
 ];
@@ -149,15 +141,15 @@ export const referral_values = [
 
 export const virality_values = () => {
   let virality = [];
-  for(let i=0.25; i<=5; i = i+0.25){
-      virality.push({value : i, label : i});
+  for (let i = 0.25; i <= 5; i = i + 0.25) {
+    virality.push({ value: i, label: i });
   }
   return virality;
 }
 
 export const levels_values = () => {
   let levels = [];
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 2; i <= 10; i++) {
     levels.push({ value: i, label: i });
   }
   return levels;

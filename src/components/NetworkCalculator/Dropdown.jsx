@@ -37,18 +37,6 @@ export default function SimpleSelect({ func, label, id, values, default_value_in
     func(event.value, id);
   }
 
-  const slideValues = [];
-  for (let i = 1; i <= 10; i++) {
-    slideValues.push({ value: Number(`${i}000`), label: (`$${i},000`) });
-  }
-
-  for (let i = 2; i <= 10; i++) {
-    slideValues.push({ value: Number(`${i}0000`), label: (`${i}0,000`) });
-  }
-
-  for (let i = 2; i <= 10; i++) {
-    slideValues.push({ value: Number(`${i}00000`), label: (`${i}00,000`) });
-  }
   return (
     <>
       <label for={id} style={{ display: 'flex', fontSize: '15px', fontWeight: 'bold' }}>

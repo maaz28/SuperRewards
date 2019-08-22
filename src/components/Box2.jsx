@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Dropdown from './NetworkCalculator/Dropdown';
 import { calculateTokenPriceInDollars } from '../smartContractFunc/functions';
 import { package_values, average_purchases_values, referral_values, virality_values, levels_values } from './NetworkCalculator/Dropdown_constant_values';
-import { level1, level2, level3, level4, level5, level6, level7, level8, level9, level10 } from './NetworkCalculator/algo';
+import { binary_reward_func, unilevel_reward } from './NetworkCalculator/algo';
 
-const levels_arr = [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10];
+// const levels_arr = [level1, level2, level3, level4, level5, level6, level7, level8, level9, level10];
 
 export default class Box2 extends Component {
 
@@ -15,8 +15,8 @@ export default class Box2 extends Component {
       referrals: 5,
       virality: 2,
       levels: 10,
-      purchase: 100,
-      pkg: 100
+      purchase: 1,
+      pkg: 0.83
     };
 
     this.setValue = this.setValue.bind(this);
@@ -49,10 +49,13 @@ export default class Box2 extends Component {
       levels,
       purchase,
       pkg } = this.state;
-    let func = levels_arr[levels - 1];
-    console.log(func)
-    console.log(referrals, virality, pkg, purchase)
-    let profit = func(referrals, virality, pkg, purchase);
+    let BR = binary_reward_func(referrals, virality, levels, pkg, purchase);
+    let UR = unilevel_reward(referrals, virality, levels, pkg, purchase);
+    let profit = BR + UR;
+    // let func = levels_arr[levels - 1];
+    // console.log(func)
+    // console.log(referrals, virality, pkg, purchase)
+    // let profit = func(referrals, virality, pkg, purchase);
     console.log(profit);
     return (
       <div>
@@ -105,7 +108,7 @@ export default class Box2 extends Component {
               id="levels"
               values={levels_values()}
               func={this.setValue}
-              default_value_index={9}
+              default_value_index={8}
             />
           </div>
 

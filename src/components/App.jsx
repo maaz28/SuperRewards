@@ -12,8 +12,8 @@ export default class App extends Component {
     return (
       <div>
         <Box1 />
-        <Box2 />
         <Box3 />
+        <Box2 />
         <Box4 />
         <Box5 />
       </div>
